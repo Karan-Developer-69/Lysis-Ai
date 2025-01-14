@@ -1,0 +1,192 @@
+:root {
+  --bg-primary: #1b1d36; /* Main background */
+  --bg-secondary: #232742; /* Secondary background */
+  --text-primary: #e4e6eb; /* Main text */
+  --text-secondary: #aeb3c0; /* Subtle text */
+  --accent: #ff477e; /* Primary accent */
+  --accent-gradient: linear-gradient(90deg, #ff477e, #ff7096); /* Button gradient */
+  --accent-hover: #ff6a9e; /* Button hover */
+  --secondary-accent: #4bafff; /* Secondary action color */
+  --chat-user: #3b3e61; /* User chat bubble */
+  --chat-ai: #2a2d4a; /* AI chat bubble */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: var(--bg-secondary);
+}
+
+.chat-container .user-msg {
+  max-width: 70%;
+  padding: 12px 16px;
+  align-self: flex-end;
+  background: var(--chat-user);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.chat-container .ai-msg {
+  max-width: 70%;
+  padding: 12px 16px;
+  background: var(--chat-ai);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  background: var(--bg-secondary);
+  gap: 10px;
+}
+
+.chat-input-container input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1); /* Glass-like background */
+  border: 2px solid var(--text-secondary);
+  border-radius: 15px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-input-container input::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.chat-input-container input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  background: rgba(255, 255, 255, 0.15); /* Slightly lighter on focus */
+}
+
+.chat-input-container button {
+  width: 20%;
+  max-width: 80px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  color: #fff;
+  background: var(--accent-gradient);
+  border: none;
+  border-radius: 20px; /* Pill shape */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.chat-input-container button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px); /* Hover lift */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+.chat-input-container button:active {
+  transform: translateY(2px); /* Button presses down */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow decreases */
+}
+
+/* Ripple Effect */
+.chat-input-container button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.chat-input-container button:active::after {
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    padding: 15px 6px;
+  }
+
+  .chat-container .user-msg,
+  .chat-container .ai-msg {
+    font-size: 14px;
+  }
+
+  .chat-input-container input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .chat-input-container button {
+    font-size: 16px;
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    gap: 10px;
+  }
+
+  .chat-container .user-msg,
+  .chat-container .ai-msg {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .chat-input-container input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .chat-input-container button {
+    font-size: 14px;
+    max-width: 50px;
+  }
+}
