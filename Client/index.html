@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,21 +6,29 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
     />
     <title>Lysis</title>
   </head>
   <body>
+    <header>
+      <h3>Lysis</h3>
+    </header>
     <main>
       <div class="chat-container">
-          
-        </div>
+        <!-- Chat messages will be appended here -->
+      </div>
       <div class="chat-input-container">
-        <input id="user-input" autocomplete="off" type="text">
-        <button id="send-btn"><i class="ri-send-plane-2-line"></i></button>
+        <!-- Mic button for voice input -->
+        <button id="mic-btn"><i class="ri-mic-line"></i></button></code>
+        <textarea id="user-input" autocomplete="off" placeholder="Type or speak your message..."></textarea>
+        <button id="send-btn"><i class="ri-send-plane-2-line"></i></button></code>
       </div>
     </main>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_UNIQUE_KEY"></script>
+
     <script type="module" src="/src/main.js"></script>
+    
   </body>
 </html>
